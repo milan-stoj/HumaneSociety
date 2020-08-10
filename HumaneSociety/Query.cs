@@ -167,6 +167,7 @@ namespace HumaneSociety
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
             throw new NotImplementedException();
+            Console.WriteLine("Hello world");
         }
 
         // TODO: Animal CRUD Operations
