@@ -170,9 +170,12 @@ namespace HumaneSociety
             x = 100;
             int y;
             y = 100;
+            string goodbyeWorld;
+            string helloWorld;
+            
 
             throw new NotImplementedException();
-            Console.WriteLine("Hello world");
+            Console.WriteLine("goodbye cruel world");
         }
 
         // TODO: Animal CRUD Operations
