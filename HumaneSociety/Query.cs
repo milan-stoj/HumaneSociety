@@ -166,6 +166,11 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
+            int x;
+            x = 100;
+            int y;
+            y = 100;
+
             throw new NotImplementedException();
         }
 
@@ -181,7 +186,7 @@ namespace HumaneSociety
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
-        {            
+        {
             throw new NotImplementedException();
         }
 
