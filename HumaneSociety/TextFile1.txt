@@ -1,0 +1,58 @@
+﻿--Seeding 5 Employees
+INSERT INTO Employees (FirstName, LastName, UserName, Password, EmployeeNumber, Email) VALUES ('Milan', 'Stojanovic', 'milanstoj', 'mstoj6', 585823, 'milanstoj@gmail.com'); -- EmployeeId = 1
+INSERT INTO Employees (FirstName, LastName, UserName, Password, EmployeeNumber, Email) VALUES ('Sam', 'Clavette', 'samclav', 'sclav4', 525289, 'samclav@gmail.com'); -- EmployeeId = 2
+INSERT INTO Employees (FirstName, LastName, UserName, Password, EmployeeNumber, Email) VALUES ('John', 'Doe', 'johndoe', 'jdoe0', 454548, 'johndoe@gmail.com'); -- EmployeeId = 3
+INSERT INTO Employees (FirstName, LastName, UserName, Password, EmployeeNumber, Email) VALUES ('Elon', 'Musk', 'elonmusk', 'emusk0', 258465, 'elonmusk@gmail.com'); -- EmployeeId = 4
+INSERT INTO Employees (FirstName, LastName, UserName, Password, EmployeeNumber, Email) VALUES ('Aaron', 'Rodgers', 'aaronrodg', 'arodg12', 837664, 'milanstoj@gmail.com'); -- EmployeeId = 5
+
+--Seeding 5 Categories
+INSERT INTO Categories (Name) VALUES ('Dog'); -- CategoryId = 1
+INSERT INTO Categories (Name) VALUES ('Cat'); -- CategoryId = 2
+INSERT INTO Categories (Name) VALUES ('Rabbit'); -- CategoryId = 3
+INSERT INTO Categories (Name) VALUES ('Bird'); -- CategoryId = 4
+INSERT INTO Categories (Name) VALUES ('Reptile'); -- CategoryId = 5
+
+--Seeding 5 Diet Plans
+INSERT INTO DietPlans (Name, FoodType, FoodAmountInCups) VALUES ('Canine Plan', 'Kibble', 4); -- DietPlanId = 1
+INSERT INTO DietPlans (Name, FoodType, FoodAmountInCups) VALUES ('Feline Plan', 'Kibble', 1); -- DietPlanId = 2
+INSERT INTO DietPlans (Name, FoodType, FoodAmountInCups) VALUES ('Rabbit Plan', 'Leafy Greens', 3); -- DietPlanId = 3
+INSERT INTO DietPlans (Name, FoodType, FoodAmountInCups) VALUES ('Bird Plan', 'Seed', 1); -- DietPlanId = 4
+INSERT INTO DietPlans (Name, FoodType, FoodAmountInCups) VALUES ('Reptile Plan', 'Insects', 1); -- DietPlanId = 5
+
+--Seeding 5 Animals
+INSERT INTO Animals (Name, Weight, Age, Demeanor, KidFriendly, PetFriendly, Gender, AdoptionStatus, CategoryId, DietPlanId, EmployeeId) 
+VALUES ('Bob', 80, 8, 'friendly', 1, 1, 'male', 'available', 1, 1, 2); -- AnimalId = 1
+INSERT INTO Animals (Name, Weight, Age, Demeanor, KidFriendly, PetFriendly, Gender, AdoptionStatus, CategoryId, DietPlanId, EmployeeId) 
+VALUES ('Fred', 6, 5, 'shy', 1, 1, 'male', 'available', 4, 4, 1); -- AnimalId = 2
+INSERT INTO Animals (Name, Weight, Age, Demeanor, KidFriendly, PetFriendly, Gender, AdoptionStatus, CategoryId, DietPlanId, EmployeeId) 
+VALUES ('Kat', 5, 10, 'aggressive', 0, 1, 'female', 'adopted', 2, 2, 4); -- AnimalId = 3
+INSERT INTO Animals (Name, Weight, Age, Demeanor, KidFriendly, PetFriendly, Gender, AdoptionStatus, CategoryId, DietPlanId, EmployeeId) 
+VALUES ('Larry', 2, 3, 'reserved', 0, 1, 'male', 'available', 5, 5, 5); -- AnimalId = 4
+INSERT INTO Animals (Name, Weight, Age, Demeanor, KidFriendly, PetFriendly, Gender, AdoptionStatus, CategoryId, DietPlanId, EmployeeId) 
+VALUES ('Lola Bunny', 3, 5, 'shy', 1, 1, 'female', 'available', 4, 4, 4); -- AnimalId = 5
+
+--Seeding 10 Rooms
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (101, 1);
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (102, 2);
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (103, 3);
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (104, 4);
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (105, 5);
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (201, null);
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (202, null);
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (203, null);
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (301, null);
+INSERT INTO Rooms (RoomNumber, AnimalId) VALUES (302, null);
+
+--Seeding 5 Addresses
+INSERT INTO Addresses (AddressLine1, City, USStateId, Zipcode) VALUES ('2233 E Road Ave', 'Milwaukee', 49, 53092);
+INSERT INTO Addresses (AddressLine1, City, USStateId, Zipcode) VALUES ('1521 N Lake Dr', 'Milwaukee', 49, 53092);
+INSERT INTO Addresses (AddressLine1, City, USStateId, Zipcode) VALUES ('987 N Kane', 'Milwaukee', 49, 53092);
+INSERT INTO Addresses (AddressLine1, City, USStateId, Zipcode) VALUES ('425 S Prarie Ave', 'Waukesha', 49, 53095);
+INSERT INTO Addresses (AddressLine1, City, USStateId, Zipcode) VALUES ('2200 Ptarmigan Ct', 'Aurora', 13, 60502);
+
+--Seeding 5 Clients
+INSERT INTO Clients (FirstName, LastName, UserName, Password, AddressId, Email) VALUES ('Dave', 'Smith', 'dsmith', 'password', 1, 'dsmith@gmail.com');
+INSERT INTO Clients (FirstName, LastName, UserName, Password, AddressId, Email) VALUES ('Chris', 'Smith', 'csmith', 'smith', 2, 'csmith@gmail.com');
+INSERT INTO Clients (FirstName, LastName, UserName, Password, AddressId, Email) VALUES ('Sam', 'Smith', 'ssmith', 'xyz321', 3, 'ssmith@gmail.com');
+INSERT INTO Clients (FirstName, LastName, UserName, Password, AddressId, Email) VALUES ('John', 'Smith', 'jsmith', 'abc123', 4, 'jsmith@gmail.com');
+INSERT INTO Clients (FirstName, LastName, UserName, Password, AddressId, Email) VALUES ('Bob', 'Smith', 'bsmith', 'password5', 5, 'bsmith@gmail.com');

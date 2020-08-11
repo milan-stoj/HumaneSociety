@@ -182,11 +182,13 @@ namespace HumaneSociety
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
+            Animal updatedAnimal = db.Animals.Where(a => a.AnimalId == animalId).FirstOrDefault();
             throw new NotImplementedException();
         }
 
         internal static void RemoveAnimal(Animal animal)
         {
+            Animal animalFromDb = db.Animals.Where()
             throw new NotImplementedException();
         }
         
