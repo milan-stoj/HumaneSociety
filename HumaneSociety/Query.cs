@@ -107,7 +107,7 @@ namespace HumaneSociety
                 newAddress.AddressLine1 = clientAddress.AddressLine1;
                 newAddress.City = null;
                 newAddress.USStateId = clientAddress.USStateId;
-                newAddress.Zipcode = clientAddress.Zipcode;                
+                newAddress.Zipcode = clientAddress.Zipcode;
 
                 db.Addresses.InsertOnSubmit(newAddress);
                 db.SubmitChanges();
@@ -166,7 +166,30 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
+            switch (crudOperation)
+            {
+                case "update":
+                    Employee employeeToUpdate = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    // UpdateEmployee(Empoloyee empoloyeeToUpdate)
+                    break;
+                case "read":
+                    // read method
+                    break;
+                case "delete":
+                    Employee employeeToDelete = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    db.Employees.DeleteOnSubmit(employeeToDelete);
+                    db.SubmitChanges();
+                    break;
+                case "create":
+                    db.Employees.InsertOnSubmit(employee);
+                    db.SubmitChanges();
+                    break;
+
+                default:
+                    break;
+            }
+
+            // throw new NotImplementedException();
         }
 
         // TODO: Animal CRUD Operations
@@ -188,7 +211,6 @@ namespace HumaneSociety
 
         internal static void RemoveAnimal(Animal animal)
         {
-            Animal animalFromDb = db.Animals.Where()
             throw new NotImplementedException();
         }
         
