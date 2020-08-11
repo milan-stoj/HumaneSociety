@@ -170,7 +170,10 @@ namespace HumaneSociety
             {
                 case "update":
                     Employee employeeToUpdate = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
-                    // UpdateEmployee(Empoloyee empoloyeeToUpdate)
+                    employeeToUpdate.FirstName = employee.FirstName;
+                    employeeToUpdate.LastName = employee.LastName;
+                    employeeToUpdate.Email = employee.Email;
+                    db.SubmitChanges();
                     break;
                 case "read":
                     // read method
