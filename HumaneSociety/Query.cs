@@ -170,25 +170,30 @@ namespace HumaneSociety
             {
                 case "update":
                     Employee employeeToUpdate = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    if (employeeToUpdate == null) { break; }
                     employeeToUpdate.FirstName = employee.FirstName;
                     employeeToUpdate.LastName = employee.LastName;
                     employeeToUpdate.Email = employee.Email;
                     db.SubmitChanges();
                     break;
                 case "read":
-                    // read method
+                    Employee employeeToRead = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    if (employeeToRead == null) { break; }
+                    Console.WriteLine($"First Name: {employeeToRead.FirstName}\n" +
+                        $"Last Name: {employeeToRead.LastName}\n" +
+                        $"Email: {employeeToRead.Email}\n" +
+                        $"Employee Number: {employeeToRead.EmployeeNumber}\n" );
+                    Console.ReadLine();
                     break;
                 case "delete":
                     Employee employeeToDelete = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    if (employeeToDelete == null) { break; }
                     db.Employees.DeleteOnSubmit(employeeToDelete);
                     db.SubmitChanges();
                     break;
                 case "create":
                     db.Employees.InsertOnSubmit(employee);
                     db.SubmitChanges();
-                    break;
-
-                default:
                     break;
             }
 
