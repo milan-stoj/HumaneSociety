@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -206,7 +207,7 @@ namespace HumaneSociety
             throw new NotImplementedException();
         }
 
-        internal static Animal GetAnimalByID(int id)
+        internal static Animal GetAnimalByID(int id) 
         {
             throw new NotImplementedException();
         }
@@ -231,7 +232,7 @@ namespace HumaneSociety
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
-            throw new NotImplementedException();
+            return db.Categories.Where(c => c.Name == categoryName).FirstOrDefault().CategoryId;
         }
         
         internal static Room GetRoom(int animalId)
@@ -241,7 +242,7 @@ namespace HumaneSociety
         
         internal static int GetDietPlanId(string dietPlanName)
         {
-            throw new NotImplementedException();
+            return db.DietPlans.Where(c => c.Name == dietPlanName).FirstOrDefault().DietPlanId;
         }
 
         // TODO: Adoption CRUD Operations
