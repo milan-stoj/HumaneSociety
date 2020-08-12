@@ -212,13 +212,13 @@ namespace HumaneSociety
         {
             Animal animalToGet = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             return animalToGet;
+            // needs exception
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
             Animal animalToUpdate = db.Animals.Where(a => a.AnimalId == animalId).FirstOrDefault();
             var keyList = new List<int>(updates.Keys);
-
             foreach (int key in keyList)
             {
                 switch (key)
@@ -251,7 +251,9 @@ namespace HumaneSociety
 
         internal static void RemoveAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            db.Animals.DeleteOnSubmit(animal);
+            db.SubmitChanges();
+            // throw new NotImplementedException();
         }
         
         // TODO: Animal Multi-Trait Search
