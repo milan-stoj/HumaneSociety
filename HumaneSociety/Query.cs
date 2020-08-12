@@ -330,13 +330,16 @@ namespace HumaneSociety
                 adoptionToUpdate.PaymentCollected = false;
                 Animal animalToUpdate = db.Animals.Where(a => a.AnimalId == adoptionToUpdate.AnimalId).FirstOrDefault();
                 animalToUpdate.AdoptionStatus = "available";
+                RemoveAdoption(adoption.AnimalId, adoption.ClientId);
                 db.SubmitChanges();
             }
         }
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
-            throw new NotImplementedException();
+            Adoption adoptionToDelete = db.Adoptions.Where(a => a.AnimalId == animalId && a.ClientId == clientId).FirstOrDefault();
+            db.Adoptions.DeleteOnSubmit(adoptionToDelete);
+            db.SubmitChanges();
         }
 
         // TODO: Shots Stuff
