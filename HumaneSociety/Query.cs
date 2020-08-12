@@ -316,7 +316,7 @@ namespace HumaneSociety
             {
                 int dietPlanId = db.DietPlans.Where(c => c.Name == dietPlanName).FirstOrDefault().DietPlanId;
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 Console.WriteLine("Diet Plan does not exist. Enter a new Diet Plan Name: ");
                 return GetDietPlanId(Console.ReadLine());
@@ -392,7 +392,7 @@ namespace HumaneSociety
             {
                 animalShotToAdd.ShotId = db.Shots.Where(s => s.Name == shotName).FirstOrDefault().ShotId;
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 Console.WriteLine("Shot does not exist. Re-enter the shot name: ");
                 UpdateShot(Console.ReadLine(), animal);
