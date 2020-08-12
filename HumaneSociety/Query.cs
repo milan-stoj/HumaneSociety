@@ -296,9 +296,7 @@ namespace HumaneSociety
                         break;
                 }
             }
-
             return query;
-            // Ask about 'multiple traits' -- seek guidance on searching with multiple traits.
         }
         
         // TODO: Misc Animal Things
@@ -310,11 +308,19 @@ namespace HumaneSociety
         internal static Room GetRoom(int animalId)
         {
             return db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
-            //throw new NotImplementedException();
         }
         
         internal static int GetDietPlanId(string dietPlanName)
         {
+            try
+            {
+                int dietPlanId = db.DietPlans.Where(c => c.Name == dietPlanName).FirstOrDefault().DietPlanId;
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("Diet Plan does not exist. Enter a new Diet Plan Name: ");
+                return GetDietPlanId(Console.ReadLine());
+            }
             return db.DietPlans.Where(c => c.Name == dietPlanName).FirstOrDefault().DietPlanId;
         }
 
