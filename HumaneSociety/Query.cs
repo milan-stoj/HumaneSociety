@@ -223,27 +223,35 @@ namespace HumaneSociety
                 switch (key)
                 {
                     case 1:
-                        animalToUpdate.CategoryId = GetCategoryId(updates[key]);
+                        animalToUpdate.Category = db.Categories.Where(c => c.CategoryId == GetCategoryId(updates[key])).FirstOrDefault();
+                        db.SubmitChanges();
                         break;
                     case 2:
                         animalToUpdate.Name = updates[key];
+                        db.SubmitChanges();
                         break;
                     case 3:
                         animalToUpdate.Age = Convert.ToInt32(updates[key]);
+                        db.SubmitChanges();
                         break;
                     case 4:
                         animalToUpdate.Demeanor = updates[key];
+                        db.SubmitChanges();
                         break;
                     case 5:
                         animalToUpdate.KidFriendly = Convert.ToBoolean(updates[key]);
+                        db.SubmitChanges();
                         break;
                     case 6:
                         animalToUpdate.PetFriendly = Convert.ToBoolean(updates[key]);
+                        db.SubmitChanges();
                         break;
                     case 7:
                         animalToUpdate.Weight = Convert.ToInt32(updates[key]);
+                        db.SubmitChanges();
                         break;
                 }
+
             }
             throw new NotImplementedException();
         }
@@ -285,7 +293,14 @@ namespace HumaneSociety
         // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)
         {
-            throw new NotImplementedException();
+            Adoption adoptionToInsert = new Adoption();
+            adoptionToInsert.AnimalId = animal.AnimalId;
+            adoptionToInsert.ClientId = client.ClientId;
+            adoptionToInsert.ApprovalStatus = "Pending";
+            adoptionToInsert.AdoptionFee = 75;
+            adoptionToInsert.PaymentCollected = Convert.ToBoolean(0);
+            db.Adoptions.InsertOnSubmit(adoptionToInsert);
+            db.SubmitChanges();
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
