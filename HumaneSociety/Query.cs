@@ -343,7 +343,6 @@ namespace HumaneSociety
                                          where adoption.ApprovalStatus == "Pending"
                                          select adoption;
             return query;
-            throw new NotImplementedException();
         }
 
         internal static void UpdateAdoption(bool isAdopted, Adoption adoption)
@@ -389,7 +388,16 @@ namespace HumaneSociety
         {
             AnimalShot animalShotToAdd = new AnimalShot();
             animalShotToAdd.AnimalId = animal.AnimalId;
-            animalShotToAdd.ShotId = db.Shots.Where(s => s.Name == shotName).FirstOrDefault().ShotId;
+            try
+            {
+                animalShotToAdd.ShotId = db.Shots.Where(s => s.Name == shotName).FirstOrDefault().ShotId;
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("Shot does not exist. Re-enter the shot name: ");
+                UpdateShot(Console.ReadLine(), animal);
+                return;
+            }
             animalShotToAdd.DateReceived = DateTime.Now;
             db.AnimalShots.InsertOnSubmit(animalShotToAdd);
             db.SubmitChanges();
