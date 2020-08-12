@@ -217,7 +217,35 @@ namespace HumaneSociety
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
             Animal animalToUpdate = db.Animals.Where(a => a.AnimalId == animalId).FirstOrDefault();
-            // switch case where each
+            var keyList = new List<int>(updates.Keys);
+
+            foreach (int key in keyList)
+            {
+                switch (key)
+                {
+                    case 1:
+                        animalToUpdate.CategoryId = GetCategoryId(updates[key]);
+                        break;
+                    case 2:
+                        animalToUpdate.Name = updates[key];
+                        break;
+                    case 3:
+                        animalToUpdate.Age = Convert.ToInt32(updates[key]);
+                        break;
+                    case 4:
+                        animalToUpdate.Demeanor = updates[key];
+                        break;
+                    case 5:
+                        animalToUpdate.KidFriendly = Convert.ToBoolean(updates[key]);
+                        break;
+                    case 6:
+                        animalToUpdate.PetFriendly = Convert.ToBoolean(updates[key]);
+                        break;
+                    case 7:
+                        animalToUpdate.Weight = Convert.ToInt32(updates[key]);
+                        break;
+                }
+            }
             throw new NotImplementedException();
         }
 
@@ -230,8 +258,6 @@ namespace HumaneSociety
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
 
-            //adding new lines 
-            //hahahahahahahahah
             throw new NotImplementedException();
         }
          
