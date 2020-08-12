@@ -220,8 +220,18 @@ namespace HumaneSociety
         private void RemoveAnimal()
         {
             var updates = UserInterface.GetAnimalSearchCriteria();
-            var animals = Query.SearchForAnimalsByMultipleTraits(updates).ToList();
+            try
+            {
+                Query.SearchForAnimalsByMultipleTraits(updates).ToList();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("No animals were found matching your search criteria.");
+                Console.WriteLine("No removal occured.");
+                return;
+            }
 
+            var animals = Query.SearchForAnimalsByMultipleTraits(updates).ToList();
             if (animals.Count > 1)
             {
                 UserInterface.DisplayUserOptions("Several animals found please refine your search.");

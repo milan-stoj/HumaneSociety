@@ -256,24 +256,47 @@ namespace HumaneSociety
 
         internal static void RemoveAnimal(Animal animal)
         {
-            try
-            {
-                db.Animals.DeleteOnSubmit(animal);
-            }
-            catch (Exception)
-            {
-                throw new NullReferenceException();
-            }
+            db.Animals.DeleteOnSubmit(animal);
             db.SubmitChanges();
-            
         }
         
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
-            IQueryable<Animal> query = from animal in db.Animals
-                                       where animal.CategoryId == GetCategoryId(updates[1])
-                                       select animal;
+            IQueryable<Animal> query = db.Animals;
+
+            var keyList = new List<int>(updates.Keys);
+            foreach (int key in keyList)
+            {
+                switch (key)
+                {
+                    case 1:
+                        query = query.Where(a => a.CategoryId == GetCategoryId(updates[key]));
+                        break;
+                    case 2:
+                        query = query.Where(a => a.Name == updates[key]);
+                        break;
+                    case 3:
+                        query = query.Where(a => a.Age == Convert.ToInt32(updates[key]));
+                        break;
+                    case 4:
+                        query = query.Where(a => a.Demeanor == updates[key]);
+                        break;
+                    case 5:
+                        query = query.Where(a => a.KidFriendly == Convert.ToBoolean(updates[key]));
+                        break;
+                    case 6:
+                        query = query.Where(a => a.PetFriendly == Convert.ToBoolean(updates[key]));
+                        break;
+                    case 7:
+                        query = query.Where(a => a.Weight == Convert.ToInt32(updates[key]));
+                        break;
+                    case 8:
+                        query = query.Where(a => a.AnimalId == Convert.ToInt32(updates[key]));
+                        break;
+                }
+            }
+
             return query;
             // Ask about 'multiple traits' -- seek guidance on searching with multiple traits.
         }
