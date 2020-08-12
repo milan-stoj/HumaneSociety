@@ -56,3 +56,10 @@ INSERT INTO Clients (FirstName, LastName, UserName, Password, AddressId, Email) 
 INSERT INTO Clients (FirstName, LastName, UserName, Password, AddressId, Email) VALUES ('Sam', 'Smith', 'ssmith', 'xyz321', 3, 'ssmith@gmail.com');
 INSERT INTO Clients (FirstName, LastName, UserName, Password, AddressId, Email) VALUES ('John', 'Smith', 'jsmith', 'abc123', 4, 'jsmith@gmail.com');
 INSERT INTO Clients (FirstName, LastName, UserName, Password, AddressId, Email) VALUES ('Bob', 'Smith', 'bsmith', 'password5', 5, 'bsmith@gmail.com');
+
+--Seeding 5 Shots
+INSERT INTO Shots (Name) VALUES ('Rabies');
+INSERT INTO Shots (Name) VALUES ('Distemper Virus');
+INSERT INTO Shots (Name) VALUES ('Adenovirus');
+INSERT INTO Shots (Name) VALUES ('Parovirus');
+INSERT INTO Shots (Name) VALUES ('Calicivirus');
