@@ -303,14 +303,35 @@ namespace HumaneSociety
             db.SubmitChanges();
         }
 
-        internal static IQueryable<Adoption> GetPendingAdoptions()
+        internal static IQueryable<Adoption> GetPendingAdoptions() // Test for multiple pending adoptions.
         {
+            IQueryable<Adoption> query = from adoption in db.Adoptions
+                                         where adoption.ApprovalStatus == "Pending"
+                                         select adoption;
+            return query;
             throw new NotImplementedException();
         }
 
         internal static void UpdateAdoption(bool isAdopted, Adoption adoption)
         {
-            throw new NotImplementedException();
+            Adoption adoptionToUpdate = adoption;
+            // Adoption Approved (bool = true)
+            if (isAdopted == true)
+            {
+                adoptionToUpdate.ApprovalStatus = "Approved";
+                adoptionToUpdate.PaymentCollected = true;
+                Animal animalToUpdate = db.Animals.Where(a => a.AnimalId == adoptionToUpdate.AnimalId).FirstOrDefault();
+                animalToUpdate.AdoptionStatus = "adopted";
+                db.SubmitChanges();
+            }
+            else if(isAdopted == false)
+            {
+                adoptionToUpdate.ApprovalStatus = "Denied";
+                adoptionToUpdate.PaymentCollected = false;
+                Animal animalToUpdate = db.Animals.Where(a => a.AnimalId == adoptionToUpdate.AnimalId).FirstOrDefault();
+                animalToUpdate.AdoptionStatus = "available";
+                db.SubmitChanges();
+            }
         }
 
         internal static void RemoveAdoption(int animalId, int clientId)
