@@ -262,6 +262,7 @@ namespace HumaneSociety
                                        where animal.CategoryId == GetCategoryId(updates[1])
                                        select animal;
             return query;
+            // Ask about 'multiple traits' -- seek guidance on searching with multiple traits.
         }
         
         // TODO: Misc Animal Things
