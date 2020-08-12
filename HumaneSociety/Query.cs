@@ -212,18 +212,48 @@ namespace HumaneSociety
         {
             Animal animalToGet = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             return animalToGet;
+            // needs exception
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
             Animal animalToUpdate = db.Animals.Where(a => a.AnimalId == animalId).FirstOrDefault();
-            // switch case where each
+            var keyList = new List<int>(updates.Keys);
+            foreach (int key in keyList)
+            {
+                switch (key)
+                {
+                    case 1:
+                        animalToUpdate.CategoryId = GetCategoryId(updates[key]);
+                        break;
+                    case 2:
+                        animalToUpdate.Name = updates[key];
+                        break;
+                    case 3:
+                        animalToUpdate.Age = Convert.ToInt32(updates[key]);
+                        break;
+                    case 4:
+                        animalToUpdate.Demeanor = updates[key];
+                        break;
+                    case 5:
+                        animalToUpdate.KidFriendly = Convert.ToBoolean(updates[key]);
+                        break;
+                    case 6:
+                        animalToUpdate.PetFriendly = Convert.ToBoolean(updates[key]);
+                        break;
+                    case 7:
+                        animalToUpdate.Weight = Convert.ToInt32(updates[key]);
+                        break;
+                }
+            }
             throw new NotImplementedException();
         }
 
         internal static void RemoveAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            db.Animals.DeleteOnSubmit(animal);
+            db.SubmitChanges();
+            // throw new NotImplementedException();
         }
         
         // TODO: Animal Multi-Trait Search
