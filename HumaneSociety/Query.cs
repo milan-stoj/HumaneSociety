@@ -212,7 +212,6 @@ namespace HumaneSociety
         {
             Animal animalToGet = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             return animalToGet;
-            // needs exception
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
@@ -264,7 +263,7 @@ namespace HumaneSociety
                                        select animal;
             return query;
         }
-         
+        
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
@@ -273,7 +272,8 @@ namespace HumaneSociety
         
         internal static Room GetRoom(int animalId)
         {
-            throw new NotImplementedException();
+            return db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
+            //throw new NotImplementedException();
         }
         
         internal static int GetDietPlanId(string dietPlanName)
